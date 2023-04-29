@@ -2,6 +2,7 @@ import ocfl from '@ocfl/ocfl-fs';
 
 const storageConfig = {
   root: 'data/myocfl',
+  digestAlgorithm: 'sha256',
   layout: {
     extensionName: '000N-path-direct-storage-layout',
     replace: [
