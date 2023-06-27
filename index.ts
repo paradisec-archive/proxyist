@@ -1,6 +1,6 @@
-import ocfl from '@ocfl/ocfl-fs';
+import ocfl from '@ocfl/ocfl-s3';
 
-const storageConfig = {
+const config = {
   root: 'data/myocfl',
   digestAlgorithm: 'sha256',
   layout: {
@@ -12,14 +12,20 @@ const storageConfig = {
   },
 };
 
+const storageConfig = {
+  bucketName: 's3ocflgw-test',
+};
+
 const run = async () => {
-  let storage = ocfl.storage(storageConfig);
+  let storage = ocfl.storage(config, storageConfig);
   console.debug(storage);
 
   try {
-    storage = await ocfl.loadStorage(storageConfig);
+    console.log('Trying to load storage');
+    storage = await ocfl.loadStorage(config, storageConfig);
   } catch (error) {
-    storage = await ocfl.createStorage(storageConfig);
+    console.log('Creating storage');
+    storage = await ocfl.createStorage(config, storageConfig);
   }
 
   const object = storage.object('https://catalog.paradisec.org.au/NT1/001');
