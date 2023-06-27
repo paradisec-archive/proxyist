@@ -1,7 +1,7 @@
 {
-  "name": "s3ocflgw",
-  "version": "1.0.0",
-  "description": "REST API to an OCFL repository",
+  "name": "proxyist",
+  "version": "0.0.1",
+  "description": "Filesystem REST API which supports multiple backend plugins",
   "main": "index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "MIT",
