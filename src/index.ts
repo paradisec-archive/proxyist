@@ -1,7 +1,7 @@
 import http from 'node:http';
 import Debug from 'debug';
 
-import app from './app';
+import app from './app.js';
 
 const debug = Debug('proxyist:server');
 

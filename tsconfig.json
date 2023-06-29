@@ -3,5 +3,8 @@
     "@tsconfig/strictest/tsconfig.json",
     "@tsconfig/node18/tsconfig.json",
     "@tsconfig/esm/tsconfig.json"
-  ]
+  ],
+  "compilerOptions": {
+    "outDir": "dist"
+  },
 }
