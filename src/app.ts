@@ -5,7 +5,7 @@ import type { ErrorRequestHandler } from 'express';
 import logger from 'morgan';
 
 import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
+import objectRouter from './routes/object.js';
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/object', objectRouter);
 
 // catch 404 and forward to error handler
 app.use((_req, _res, next) => {
