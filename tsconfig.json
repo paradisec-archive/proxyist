@@ -2,9 +2,11 @@
   "extends": [
     "@tsconfig/strictest/tsconfig.json",
     "@tsconfig/node18/tsconfig.json",
-    "@tsconfig/esm/tsconfig.json"
   ],
-  "compilerOptions": {
-    "outDir": "dist"
-  },
+  "files": [],
+  "references": [
+    { "path": "./packages/proxyist" },
+    { "path": "./packages/proxyist-adapter-common" },
+    { "path": "./packages/proxyist-adapter-local" },
+  ]
 }
