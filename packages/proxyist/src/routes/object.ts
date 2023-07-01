@@ -17,7 +17,16 @@ router.get('/:identifier/:filename', (req, res) => {
 
   adapter.get(identifier, filename);
 
-  res.send('respond with a resource');
+  res.json({ me: filename });
 });
+
+router.post('/:identifier/:filename', (req, res) => {
+  const { identifier, filename } = req.params;
+
+  adapter.get(identifier, filename);
+
+  res.sendStatus(201);
+});
+
 
 export default router;
