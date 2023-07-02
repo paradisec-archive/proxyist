@@ -1,17 +1,52 @@
+import fs from 'node:fs';
+
 import type { CreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
 
 interface LocalAdapterConfig extends AdapterConfig {
   directory: string;
+  transform: (identifier: string) => string;
 }
 
 export const createAdapter: CreateAdapter<LocalAdapterConfig> = (config) => {
-  console.debug('createAdapter', config);
+  const getPath = (identifier: string, filename: string) => {
+    const path = config.transform(identifier);
 
-  const get = async (identifier: string, filename: string) => {
-    console.debug('get', identifier, filename);
+    return `${config.directory}/${path}/${filename}`;
+  };
+
+  const exists = async (identifier: string, filename: string) => {
+    const path = getPath(identifier, filename);
+
+    return fs.existsSync(path);
+  };
+
+  const read = async (identifier: string, filename: string) => {
+    const path = getPath(identifier, filename);
+
+    return fs.createReadStream(path);
+  };
+
+  const write = async (identifier: string, filename: string) => {
+    const path = getPath(identifier, filename);
+
+    const directory = path.replace(/\/[^/]+$/, '');
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
+    }
+
+    return fs.createWriteStream(path);
+  };
+
+  const rm = async (identifier: string, filename: string) => {
+    const path = getPath(identifier, filename);
+
+    return fs.rmSync(path);
   };
 
   return {
-    get,
+    exists,
+    read,
+    write,
+    rm,
   };
 };

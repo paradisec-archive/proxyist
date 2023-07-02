@@ -1,8 +1,8 @@
 {
   "env": {
     "browser": false,
-    "es2022": true
-    "jest": true,
+    "es2022": true,
+    "jest": true
   },
   "extends": [
     "eslint:recommended",
@@ -43,5 +43,7 @@
     "import/prefer-default-export": "off",
     "max-len": [ "error", { "code": 160 } ],
     "no-console": [ "warn", { "allow": [ "debug", "error", "time", "timeEnd" ] } ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"]
   }
 }
