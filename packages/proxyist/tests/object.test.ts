@@ -65,4 +65,14 @@ describe('Local Adapter /object', () => {
     .expect('Content-Type', /json/)
     .expect(200, '{ "FOO": "BAR2" }')
   );
+
+  test('DELETE /NT1-001/foo.json', async () => request(app)
+    .delete('/object/NT1-001/foo.json')
+    .expect(204)
+  );
+
+  test('GET /NT1-001/foo.json', async () => request(app)
+    .get('/object/NT1-001/foo.json')
+    .expect(404)
+  );
 });
