@@ -34,7 +34,8 @@ export const createAdapter: CreateAdapter<LocalAdapterConfig> = (config) => {
       fs.mkdirSync(directory, { recursive: true });
     }
 
-    return fs.createWriteStream(path);
+    const ws = fs.createWriteStream(path);
+    return { ws, promise: Promise.resolve(true) };
   };
 
   const rm = async (identifier: string, filename: string) => {

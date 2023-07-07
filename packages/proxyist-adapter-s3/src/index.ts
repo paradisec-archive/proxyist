@@ -7,7 +7,7 @@ import {
 import { Upload } from '@aws-sdk/lib-storage';
 
 import type { CreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
-import stream, { Readable } from 'stream';
+import stream from 'stream';
 
 interface S3AdapterConfig extends AdapterConfig {
   bucket: string,
@@ -24,7 +24,7 @@ export const createAdapter: CreateAdapter<S3AdapterConfig> = (config) => {
   const getPath = (identifier: string, filename: string) => {
     const path = config.transform(identifier);
 
-    return `${prefix}/${path}/${filename}`;
+    return `${prefix ? `${prefix}/` : ''}${path}/${filename}`;
   };
 
   const exists = async (identifier: string, filename: string) => {
@@ -58,14 +58,14 @@ export const createAdapter: CreateAdapter<S3AdapterConfig> = (config) => {
 
     const object = await s3.send(command);
 
-    return object.Body as Readable;
+    // TODO deal with errors
+    return object.Body as stream.Readable;
   };
 
   const write = async (identifier: string, filename: string) => {
     const path = getPath(identifier, filename);
 
     const ws = new stream.PassThrough();
-    console.debug('write', path);
 
     const command = {
       client: s3,

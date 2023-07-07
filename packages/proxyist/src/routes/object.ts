@@ -1,40 +1,27 @@
+import fs from 'node:fs';
 import express from 'express';
 import type { ProxyistAdapter, AdapterConfig } from 'proxyist-adapter-common';
 
 const router = express.Router();
 
-class BadIdentifierError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'BadIdentifierError';
-  }
+const adapterName = process.env.PROXYIST_ADAPTER_NAME;
+if (!adapterName) {
+  throw new Error('PROXYIST_ADAPTER_NAME is not set');
 }
 
-// FIXME put these in config later
-const adapterName = 'proxyist-adapter-local';
-const adapterConfig: AdapterConfig = {
-  directory: 'tests/data',
-  transform: (identifier: string) => {
-    if (identifier.includes('/')) {
-      throw new BadIdentifierError('Identifer cannot contain "/"');
-    }
-
-    if (identifier.includes('-')) {
-      const [, item] = identifier.split('-', 2);
-      if (item === 'root') {
-        throw new BadIdentifierError('Item cannot be named "root"');
-      }
-
-      return identifier.replace(/-/, '/');
-    }
-
-    return `${identifier}/root`;
-  },
-};
+const adapterConfigPath = process.env.PROXYIST_ADAPTER_CONFIG;
+if (!adapterConfigPath) {
+  throw new Error('PROXYIST_ADAPTER_CONFIG is not set');
+}
 
 const { createAdapter } = await import(adapterName) as ProxyistAdapter<AdapterConfig>;
 
-const adapter = createAdapter(adapterConfig);
+if (!fs.existsSync(adapterConfigPath)) {
+  throw new Error(`Adapter config file does not exist: ${adapterConfigPath}`);
+}
+const adapterConfig = await import(adapterConfigPath) as { default: AdapterConfig };
+
+const adapter = createAdapter(adapterConfig.default);
 
 router.head('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
@@ -73,35 +60,35 @@ router.post('/:identifier/:filename', async (req, res) => {
     return res.status(409).send('File already exists');
   }
 
-  const result = await adapter.write(identifier, filename);
+  const { ws, promise } = await adapter.write(identifier, filename);
 
-  if (typeof result === 'string') {
-    return res.redirect(307, result);
-  }
-
-  return req.pipe(result)
+  // if (typeof result === 'string') {
+  //   return res.redirect(307, result);
+  // }
+  //
+  return req.pipe(ws)
     .on('error', (err) => {
       console.error(err);
       res.status(500).send('Error writing to file');
     })
-    .on('finish', () => res.sendStatus(201));
+    .on('finish', async () => { await promise; res.sendStatus(201); });
 });
 
 router.put('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
 
-  const result = await adapter.write(identifier, filename);
+  const { ws, promise } = await adapter.write(identifier, filename);
 
-  if (typeof result === 'string') {
-    return res.redirect(307, result);
-  }
-
-  return req.pipe(result)
+  // if (typeof result === 'string') {
+  //   return res.redirect(307, result);
+  // }
+  //
+  return req.pipe(ws)
     .on('error', (err) => {
       console.error(err);
       res.status(500).send('Error writing to file');
     })
-    .on('finish', () => res.sendStatus(201));
+    .on('finish', async () => { await promise; res.sendStatus(201); });
 });
 
 router.delete('/:identifier/:filename', async (req, res) => {

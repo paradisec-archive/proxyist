@@ -9,5 +9,6 @@
     { "path": "./packages/proxyist-adapter-common" },
     { "path": "./packages/proxyist-adapter-local" },
     { "path": "./packages/proxyist-adapter-s3" },
+    { "path": "./packages/proxyist-adapter-tests" }
   ]
 }
