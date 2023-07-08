@@ -5,11 +5,14 @@
   "main": "dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "proxyist": "^0.0.1"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "test": "node --no-warnings --experimental-vm-modules ../../node_modules/jest/bin/jest.js --forceExit"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.0",
@@ -22,6 +25,8 @@
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "proxyist-adapter-common": "^0.0.1",
+    "proxyist-adapter-tests": "^0.0.1",
+    "ts-jest": "^29.1.1",
     "typescript": "^5.1.3"
   },
   "resolutions": {

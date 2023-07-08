@@ -65,7 +65,7 @@ router.post('/:identifier/:filename', async (req, res) => {
   // if (typeof result === 'string') {
   //   return res.redirect(307, result);
   // }
-  //
+
   return req.pipe(ws)
     .on('error', (err) => {
       console.error(err);

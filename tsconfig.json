@@ -1,14 +1,10 @@
 {
-  "extends": [
-    "@tsconfig/strictest/tsconfig.json",
-    "@tsconfig/node18/tsconfig.json",
-  ],
   "files": [],
   "references": [
-    { "path": "./packages/proxyist" },
-    { "path": "./packages/proxyist-adapter-common" },
-    { "path": "./packages/proxyist-adapter-local" },
-    { "path": "./packages/proxyist-adapter-s3" },
-    { "path": "./packages/proxyist-adapter-tests" }
+    { "path": "packages/proxyist" },
+    { "path": "packages/proxyist-adapter-common" },
+    { "path": "packages/proxyist-adapter-tests" },
+    { "path": "packages/proxyist-adapter-local" },
+    { "path": "packages/proxyist-adapter-s3" }
   ]
 }
