@@ -1,6 +1,7 @@
 import request from 'supertest'; // eslint-disable-line import/no-extraneous-dependencies
+import type { Express } from 'express';
 
-export const objectTests = (app: any) => {
+export const objectTests = (app: Express) => {
   describe('Local Adapter /object', () => {
     test('HEAD /NT1-001/no-file.json', async () => request(app)
       .head('/object/NT1-001/no-file.json')

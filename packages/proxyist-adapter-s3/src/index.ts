@@ -16,7 +16,7 @@ interface S3AdapterConfig extends AdapterConfig {
   transform: (identifier: string) => string,
 }
 
-export const createAdapter: CreateAdapter<S3AdapterConfig> = (config) => {
+export const createAdapter: CreateAdapter<S3AdapterConfig> = async (config) => {
   const s3 = config.s3 || new S3Client({});
   const bucketName = config.bucket;
   const prefix = config.prefix || '';

@@ -7,7 +7,7 @@ interface LocalAdapterConfig extends AdapterConfig {
   transform: (identifier: string) => string;
 }
 
-export const createAdapter: CreateAdapter<LocalAdapterConfig> = (config) => {
+export const createAdapter: CreateAdapter<LocalAdapterConfig> = async (config) => {
   const getPath = (identifier: string, filename: string) => {
     const path = config.transform(identifier);
 

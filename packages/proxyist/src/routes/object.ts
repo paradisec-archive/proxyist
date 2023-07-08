@@ -21,7 +21,7 @@ if (!fs.existsSync(adapterConfigPath)) {
 }
 const adapterConfig = await import(adapterConfigPath) as { default: AdapterConfig };
 
-const adapter = createAdapter(adapterConfig.default);
+const adapter = await createAdapter(adapterConfig.default);
 
 router.head('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
