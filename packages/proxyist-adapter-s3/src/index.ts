@@ -6,7 +6,7 @@ import {
 } from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
 
-import type { CreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
+import type { ProxyistCreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
 import stream from 'stream';
 
 interface S3AdapterConfig extends AdapterConfig {
@@ -16,7 +16,8 @@ interface S3AdapterConfig extends AdapterConfig {
   transform: (identifier: string) => string,
 }
 
-export const createAdapter: CreateAdapter<S3AdapterConfig> = async (config) => {
+export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (config) => {
+  console.debug('configS3', config);
   const s3 = config.s3 || new S3Client({});
   const bucketName = config.bucket;
   const prefix = config.prefix || '';
@@ -101,3 +102,5 @@ export const createAdapter: CreateAdapter<S3AdapterConfig> = async (config) => {
     rm,
   };
 };
+
+export default createAdapter;

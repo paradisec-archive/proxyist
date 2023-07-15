@@ -1,32 +1,11 @@
-import fs from 'node:fs';
 import express from 'express';
-import type { ProxyistAdapter, AdapterConfig } from 'proxyist-adapter-common';
 
 const router = express.Router();
-
-const adapterName = process.env.PROXYIST_ADAPTER_NAME;
-if (!adapterName) {
-  throw new Error('PROXYIST_ADAPTER_NAME is not set');
-}
-
-const adapterConfigPath = process.env.PROXYIST_ADAPTER_CONFIG;
-if (!adapterConfigPath) {
-  throw new Error('PROXYIST_ADAPTER_CONFIG is not set');
-}
-
-const { createAdapter } = await import(adapterName) as ProxyistAdapter<AdapterConfig>;
-
-if (!fs.existsSync(adapterConfigPath)) {
-  throw new Error(`Adapter config file does not exist: ${adapterConfigPath}`);
-}
-const adapterConfig = await import(adapterConfigPath) as { default: AdapterConfig };
-
-const adapter = await createAdapter(adapterConfig.default);
 
 router.head('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
 
-  const result = await adapter.exists(identifier, filename);
+  const result = await req.locals.adapter.exists(identifier, filename);
 
   if (result) {
     return res.sendStatus(200);
@@ -38,11 +17,11 @@ router.head('/:identifier/:filename', async (req, res) => {
 router.get('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
 
-  if (!await adapter.exists(identifier, filename)) {
+  if (!await req.locals.adapter.exists(identifier, filename)) {
     return res.sendStatus(404);
   }
 
-  const result = await adapter.read(identifier, filename);
+  const result = await req.locals.adapter.read(identifier, filename);
 
   if (typeof result === 'string') {
     return res.redirect(result);
@@ -56,11 +35,11 @@ router.get('/:identifier/:filename', async (req, res) => {
 router.post('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
 
-  if (await adapter.exists(identifier, filename)) {
+  if (await req.locals.adapter.exists(identifier, filename)) {
     return res.status(409).send('File already exists');
   }
 
-  const { ws, promise } = await adapter.write(identifier, filename);
+  const { ws, promise } = await req.locals.adapter.write(identifier, filename);
 
   // if (typeof result === 'string') {
   //   return res.redirect(307, result);
@@ -77,7 +56,7 @@ router.post('/:identifier/:filename', async (req, res) => {
 router.put('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
 
-  const { ws, promise } = await adapter.write(identifier, filename);
+  const { ws, promise } = await req.locals.adapter.write(identifier, filename);
 
   // if (typeof result === 'string') {
   //   return res.redirect(307, result);
@@ -94,11 +73,11 @@ router.put('/:identifier/:filename', async (req, res) => {
 router.delete('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
 
-  if (!await adapter.exists(identifier, filename)) {
+  if (!await req.locals.adapter.exists(identifier, filename)) {
     return res.sendStatus(404);
   }
 
-  const result = await adapter.rm(identifier, filename);
+  const result = await req.locals.adapter.rm(identifier, filename);
 
   if (typeof result === 'string') {
     return res.redirect(result);

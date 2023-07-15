@@ -6,7 +6,11 @@
   "main": "index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "proxyist": "^0.0.1",
+    "proxyist-adapter-common": "^0.0.1",
+    "supertest": "^6.3.3"
+  },
   "type": "module",
   "scripts": {},
   "devDependencies": {
@@ -20,8 +24,6 @@
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "jest": "^29.5.0",
-    "proxyist-adapter-common": "^0.0.1",
-    "supertest": "^6.3.3",
     "typescript": "^5.1.6"
   },
   "resolutions": {

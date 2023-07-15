@@ -1,21 +1,25 @@
-import ocfl from '@johnf/ocfl-fs';
+import { OcflObjectConfig } from '@ocfl/ocfl';
+import ocflFs from '@ocfl/ocfl-fs';
+import ocflS3 from '@ocfl/ocfl-s3';
 
-import type { CreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
+import type { ProxyistCreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
 import { PassThrough } from 'stream';
 
 // TODO we should add types to OCFL
-type OcflFsStoreConfig = {
-  root: string,
-}
+type OcflStoreConfig = object;
 
 interface LocalAdapterConfig extends AdapterConfig {
-  storageConfig: OcflFsStoreConfig;
+  type: 'fs' | 's3';
+  ocflConfig: OcflObjectConfig;
+  storageConfig: OcflStoreConfig;
   transformIdentifier: (identifier: string) => string;
   transformPath: (path: string) => string;
 }
 
-export const createAdapter: CreateAdapter<LocalAdapterConfig> = async (config) => {
-  const repository = await ocfl.storage(config.storageConfig);
+const createAdapter: ProxyistCreateAdapter<LocalAdapterConfig> = async (config) => {
+  const repository = config.type === 'fs'
+    ? ocflFs.storage(config.ocflConfig, config.storageConfig)
+    : (ocflS3 as any).storage(config.ocflConfig, config.storageConfig);
 
   // TODO is this needed???
   await repository.create();
@@ -82,3 +86,5 @@ export const createAdapter: CreateAdapter<LocalAdapterConfig> = async (config) =
     rm,
   };
 };
+
+export default createAdapter;

@@ -1,7 +1,21 @@
 import http from 'node:http';
 import Debug from 'debug';
 
-import app from './app.js';
+import { loadAdapter } from './load-adapter.js';
+import App from './app.js';
+
+const adapterName = process.env.PROXYIST_ADAPTER_NAME;
+if (!adapterName) {
+  throw new Error('PROXYIST_ADAPTER_NAME is not set');
+}
+
+const adapterConfigPath = process.env.PROXYIST_ADAPTER_CONFIG;
+if (!adapterConfigPath) {
+  throw new Error('PROXYIST_ADAPTER_CONFIG is not set');
+}
+
+const adapter = await loadAdapter(adapterName, adapterConfigPath);
+const app = App(adapter);
 
 const debug = Debug('proxyist:server');
 

@@ -1,13 +1,13 @@
 import fs from 'node:fs';
 
-import type { CreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
+import type { AdapterConfig, ProxyistCreateAdapter } from 'proxyist-adapter-common';
 
 interface LocalAdapterConfig extends AdapterConfig {
   directory: string;
   transform: (identifier: string) => string;
 }
 
-export const createAdapter: CreateAdapter<LocalAdapterConfig> = async (config) => {
+const createAdapter: ProxyistCreateAdapter<LocalAdapterConfig> = async (config) => {
   const getPath = (identifier: string, filename: string) => {
     const path = config.transform(identifier);
 
@@ -51,3 +51,5 @@ export const createAdapter: CreateAdapter<LocalAdapterConfig> = async (config) =
     rm,
   };
 };
+
+export default createAdapter;

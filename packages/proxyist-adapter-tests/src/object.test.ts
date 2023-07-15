@@ -1,7 +1,22 @@
-import request from 'supertest'; // eslint-disable-line import/no-extraneous-dependencies
-import type { Express } from 'express';
+import fs from 'node:fs';
+import request from 'supertest';
 
-export const objectTests = (app: Express) => {
+import App from 'proxyist';
+
+import type { ProxyistCreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
+
+export const objectTests = async (adapterName: string, adapterConfigPath: string) => {
+  const { default: createAdapter } = await import(adapterName) as { default: ProxyistCreateAdapter<AdapterConfig> };
+
+  if (!fs.existsSync(adapterConfigPath)) {
+    throw new Error(`Adapter config file does not exist: ${adapterConfigPath}`);
+  }
+  const { default: adapterConfig } = await import(adapterConfigPath) as { default: AdapterConfig };
+
+  const adapter = await createAdapter(adapterConfig);
+
+  const app = App(adapter);
+
   describe('Local Adapter /object', () => {
     test('HEAD /NT1-001/no-file.json', async () => request(app)
       .head('/object/NT1-001/no-file.json')

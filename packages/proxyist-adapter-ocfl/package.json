@@ -6,7 +6,8 @@
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "MIT",
   "dependencies": {
-    "@johnf/ocfl-fs": "^0.3.0",
+    "@ocfl/ocfl-fs": "^0.2.0",
+    "@ocfl/ocfl-s3": "link: ../../../ocfl-js/ocfl-s3/",
     "proxyist": "^0.0.1"
   },
   "type": "module",
@@ -16,6 +17,7 @@
     "test": "node --no-warnings --experimental-vm-modules ../../node_modules/jest/bin/jest.js --forceExit"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.367.0",
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/node": "^18.16.2",

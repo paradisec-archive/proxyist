@@ -13,6 +13,6 @@
     "noPropertyAccessFromIndexSignature": false,
   },
   "include": [
-    "src"
-  ]
+    "src",
+  ],
 }
