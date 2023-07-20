@@ -1,5 +1,5 @@
 {
-  "name": "proxyist-adapter-s3",
+  "name": "@paradisec/proxyist-adapter-s3",
   "version": "0.0.1",
   "description": "S3 adapter for proxyist",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.363.0",
     "@aws-sdk/lib-storage": "^3.363.0",
-    "proxyist": "^0.0.1"
+    "@paradisec/proxyist": "^0.0.1"
   },
   "type": "module",
   "scripts": {
@@ -17,17 +17,17 @@
     "test": "node --no-warnings --experimental-vm-modules ../../node_modules/jest/bin/jest.js --forceExit"
   },
   "devDependencies": {
+    "@paradisec/proxyist-adapter-common": "^0.0.1",
+    "@paradisec/proxyist-adapter-tests": "^0.0.1",
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/node": "^18.16.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
     "eslint": "^8.43.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
-    "proxyist-adapter-common": "^0.0.1",
-    "proxyist-adapter-tests": "^0.0.1",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.3"
   },

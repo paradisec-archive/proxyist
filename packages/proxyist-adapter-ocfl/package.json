@@ -1,5 +1,5 @@
 {
-  "name": "proxyist-adapter-ocfl",
+  "name": "@paradisec/proxyist-adapter-ocfl",
   "version": "0.0.1",
   "description": "OCFL adapter for proxyist",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
   "dependencies": {
     "@ocfl/ocfl-fs": "^0.2.0",
     "@ocfl/ocfl-s3": "link: ../../../ocfl-js/ocfl-s3/",
-    "proxyist": "^0.0.1"
+    "@paradisec/proxyist": "^0.0.1"
   },
   "type": "module",
   "scripts": {
@@ -18,17 +18,17 @@
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.367.0",
+    "@paradisec/proxyist-adapter-common": "^0.0.1",
+    "@paradisec/proxyist-adapter-tests": "^0.0.1",
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/node": "^18.16.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
     "eslint": "^8.43.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
-    "proxyist-adapter-common": "^0.0.1",
-    "proxyist-adapter-tests": "^0.0.1",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.3"
   },
