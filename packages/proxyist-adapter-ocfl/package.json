@@ -4,7 +4,7 @@
   "description": "OCFL adapter for proxyist",
   "main": "dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "@ocfl/ocfl-fs": "^0.2.0",
     "@ocfl/ocfl-s3": "link: ../../../ocfl-js/ocfl-s3/",

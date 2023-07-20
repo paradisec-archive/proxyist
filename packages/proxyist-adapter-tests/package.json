@@ -5,7 +5,7 @@
   "description": "Proxyist adapter tests",
   "main": "index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "@paradisec/proxyist": "^0.0.1",
     "@paradisec/proxyist-adapter-common": "^0.0.1",
