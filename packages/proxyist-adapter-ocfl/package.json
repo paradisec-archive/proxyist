@@ -8,7 +8,8 @@
   "dependencies": {
     "@ocfl/ocfl-fs": "^0.2.0",
     "@ocfl/ocfl-s3": "link: ../../../ocfl-js/ocfl-s3/",
-    "@paradisec/proxyist": "^0.0.1"
+    "@paradisec/proxyist": "^0.0.1",
+    "@paradisec/proxyist-adapter-common": "^0.0.1"
   },
   "type": "module",
   "scripts": {

@@ -1,11 +1,6 @@
-class BadIdentifierError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'BadIdentifierError';
-  }
-}
+import { BadIdentifierError } from '@paradisec/proxyist-adapter-common';
 
-const adapterConfig = {
+export default {
   directory: 'tests/data',
   transform: (identifier) => {
     if (identifier.includes('/')) {
@@ -24,5 +19,3 @@ const adapterConfig = {
     return `${identifier}/root`;
   },
 };
-
-export default adapterConfig;

@@ -1,5 +1,5 @@
 {
-  "name": "proxyist mono repo",
+  "name": "proxyist",
   "description": "Filesystem REST API which supports multiple backend plugins",
   "private": true,
   "workspaces": ["packages/*"],

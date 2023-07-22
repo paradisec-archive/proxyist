@@ -13,6 +13,9 @@ export type ProxyistAdapter = {
 
 export type ProxyistCreateAdapter<T extends AdapterConfig> = (config: T) => Promise<ProxyistAdapter>;
 
-// export type ProxyistCreateAdapter<T extends AdapterConfig> = {
-//    createAdapter: CreateAdapter<T>;
-// };
+export class BadIdentifierError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'BadIdentifierError';
+  }
+}

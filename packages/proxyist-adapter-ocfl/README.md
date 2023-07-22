@@ -18,7 +18,7 @@ yarn add proxyist-adapter-ocfl
 
 Here is a sample proxyist configuration for this adapter talking to a local disk backend:
 ```js
-import { BadIdentifier } from '@proxyist/proxyist-adapter-common';
+import { BadIdentifierError } from '@paradisec/proxyist-adapter-common';
 
 export default {
   type: 'fs',

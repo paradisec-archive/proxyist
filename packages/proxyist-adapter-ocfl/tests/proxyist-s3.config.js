@@ -1,11 +1,5 @@
+import { BadIdentifierError } from '@paradisec/proxyist-adapter-common';
 import { S3 } from '@aws-sdk/client-s3'; // eslint-disable-line import/no-extraneous-dependencies
-
-class BadIdentifierError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'BadIdentifierError';
-  }
-}
 
 const s3Config = {
   forcePathStyle: true,
@@ -19,7 +13,7 @@ const s3Config = {
 
 const s3 = new S3(s3Config);
 
-const adapterConfig = {
+export default {
   type: 's3',
   ocflConfig: {
     root: 'tests/data-s3',
@@ -41,5 +35,3 @@ const adapterConfig = {
   },
   transformPath: (path) => path,
 };
-
-export default adapterConfig;

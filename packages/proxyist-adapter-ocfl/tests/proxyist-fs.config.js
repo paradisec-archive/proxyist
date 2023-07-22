@@ -1,11 +1,6 @@
-class BadIdentifierError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'BadIdentifierError';
-  }
-}
+import { BadIdentifierError } from '@paradisec/proxyist-adapter-common';
 
-const adapterConfig = {
+export default {
   type: 'fs',
   ocflConfig: {
     root: 'tests/data-fs',
@@ -23,5 +18,3 @@ const adapterConfig = {
   },
   transformPath: (path) => path,
 };
-
-export default adapterConfig;

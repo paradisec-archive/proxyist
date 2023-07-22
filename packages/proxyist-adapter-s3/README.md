@@ -17,7 +17,7 @@ yarn add proxyist-adapter-s3
 
 Here is a sample proxyist configuration for this adapter:
 ```js
-import { BadIdentifier } from '@proxyist/proxyist-adapter-common';
+import { BadIdentifierError } from '@paradisec/proxyist-adapter-common';
 
 import { S3 } from '@aws-sdk/client-s3';
 
