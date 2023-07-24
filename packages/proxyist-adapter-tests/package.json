@@ -12,7 +12,9 @@
     "supertest": "^6.3.3"
   },
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "test": "echo 'Error: no test specified'"
+  },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",

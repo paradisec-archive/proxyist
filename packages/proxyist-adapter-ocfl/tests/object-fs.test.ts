@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import { objectTests } from 'proxyist-adapter-tests/src/object.test'; // eslint-disable-line import/no-extraneous-dependencies
+import { objectTests } from '@paradisec/proxyist-adapter-tests/src/object.test'; // eslint-disable-line import/no-extraneous-dependencies
 
 afterAll(() => {
   fs.rmSync('tests/data-fs', { recursive: true, force: true });
@@ -9,7 +9,7 @@ afterAll(() => {
 fs.rmSync('tests/data-fs', { recursive: true, force: true });
 fs.mkdirSync('tests/data-fs');
 
-const adapterName = 'proxyist-adapter-ocfl';
+const adapterName = '@paradisec/proxyist-adapter-ocfl';
 const adapterConfigPath = (new URL('proxyist-fs.config.js', import.meta.url)).toString().replace('file://', '');
 
 await objectTests(adapterName, adapterConfigPath);

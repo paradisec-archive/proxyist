@@ -2,7 +2,7 @@ import { OcflObjectConfig } from '@ocfl/ocfl';
 import ocflFs from '@ocfl/ocfl-fs';
 import ocflS3 from '@ocfl/ocfl-s3';
 
-import type { ProxyistCreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
+import type { ProxyistCreateAdapter, AdapterConfig } from '@paradisec/proxyist-adapter-common';
 import { PassThrough } from 'stream';
 
 // TODO we should add types to OCFL

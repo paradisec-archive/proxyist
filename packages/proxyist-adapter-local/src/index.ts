@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import type { AdapterConfig, ProxyistCreateAdapter } from 'proxyist-adapter-common';
+import type { AdapterConfig, ProxyistCreateAdapter } from '@paradisec/proxyist-adapter-common';
 
 interface LocalAdapterConfig extends AdapterConfig {
   directory: string;

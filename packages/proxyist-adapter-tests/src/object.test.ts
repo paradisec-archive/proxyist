@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import request from 'supertest';
 
-import App from 'proxyist';
+import App from '@paradisec/proxyist';
 
-import type { ProxyistCreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
+import type { ProxyistCreateAdapter, AdapterConfig } from '@paradisec/proxyist-adapter-common';
 
 export const objectTests = async (adapterName: string, adapterConfigPath: string) => {
   const { default: createAdapter } = await import(adapterName) as { default: ProxyistCreateAdapter<AdapterConfig> };

@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import type { ProxyistCreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
+import type { ProxyistCreateAdapter, AdapterConfig } from '@paradisec/proxyist-adapter-common';
 
 export const loadAdapter = async (adapterName: string, adapterConfigPath: string) => {
   const createAdapter = await import(adapterName) as ProxyistCreateAdapter<AdapterConfig>;

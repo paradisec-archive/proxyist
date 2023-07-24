@@ -9,7 +9,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc -w"
+    "dev": "tsc -w",
+    "test": "echo 'Error: no test specified'"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.0",

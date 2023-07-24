@@ -3,7 +3,7 @@ import express from 'express';
 import type { ErrorRequestHandler } from 'express';
 // import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import type { ProxyistAdapter } from 'proxyist-adapter-common';
+import type { ProxyistAdapter } from '@paradisec/proxyist-adapter-common';
 
 import indexRouter from './routes/index.js';
 import objectRouter from './routes/object.js';

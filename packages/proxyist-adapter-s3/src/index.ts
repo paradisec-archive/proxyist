@@ -6,7 +6,7 @@ import {
 } from '@aws-sdk/client-s3';
 import { Upload } from '@aws-sdk/lib-storage';
 
-import type { ProxyistCreateAdapter, AdapterConfig } from 'proxyist-adapter-common';
+import type { ProxyistCreateAdapter, AdapterConfig } from '@paradisec/proxyist-adapter-common';
 import stream from 'stream';
 
 interface S3AdapterConfig extends AdapterConfig {
