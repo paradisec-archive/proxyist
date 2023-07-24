@@ -17,7 +17,6 @@ interface S3AdapterConfig extends AdapterConfig {
 }
 
 export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (config) => {
-  console.debug('configS3', config);
   const s3 = config.s3 || new S3Client({});
   const bucketName = config.bucket;
   const prefix = config.prefix || '';

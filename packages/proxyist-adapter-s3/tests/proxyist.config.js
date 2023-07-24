@@ -14,7 +14,7 @@ const s3Config = {
 const s3 = new S3(s3Config);
 
 export default {
-  directory: 'tests/data',
+  prefix: 'tests/data',
   bucket: 'proxyist',
   s3,
   transform: (identifier) => {
