@@ -1,6 +1,5 @@
 {
   "name": "@paradisec/proxyist-adapter-tests",
-  "private": true,
   "version": "0.0.1",
   "description": "Proxyist adapter tests",
   "main": "index.js",
@@ -30,5 +29,9 @@
   },
   "resolutions": {
     "tsconfig-paths": "^4.0.0"
-  }
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
 }
