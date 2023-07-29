@@ -1,6 +1,6 @@
 {
   "name": "@paradisec/proxyist",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Filesystem REST API which supports multiple backend plugins",
   "main": "dist/app.js",
   "bin": "dist/app.js",
@@ -20,7 +20,7 @@
     "dev": "concurrently \"tsc -w\" \"DEBUG=proxyist:* nodemon dist/index.js\""
   },
   "devDependencies": {
-    "@paradisec/proxyist-adapter-common": "^0.2.5",
+    "@paradisec/proxyist-adapter-common": "^0.2.6",
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/debug": "^4.1.8",
