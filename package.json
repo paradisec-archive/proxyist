@@ -5,6 +5,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "version": "version=$(jq -r .version lerna.json); sed -i -e 's/\\(\"@paradisec\\/[^\"]*\": \"^\\)[0-9.]*/\\1'$version'/' docker/package.json && git add docker/package.json"
+  },
   "dependencies": {},
   "devDependencies": {
     "lerna": "^7.1.4"
