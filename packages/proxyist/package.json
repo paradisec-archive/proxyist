@@ -3,6 +3,7 @@
   "version": "0.2.5",
   "description": "Filesystem REST API which supports multiple backend plugins",
   "main": "dist/app.js",
+  "bin": "dist/app.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "ISC",
   "dependencies": {

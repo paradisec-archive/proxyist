@@ -60,6 +60,7 @@ jobs:
           export VERSION=$(jq -r .version lerna.json)
           sed -i -e 's/\("@paradisec\/[^"]*": "^\)[0-9.]*/\1'$version'/' docker/package.json
           yarn install
+          yarn install --forzen-lockfile
 
       # https://github.com/docker/setup-buildx-action
       - name: Set up Docker Buildx
