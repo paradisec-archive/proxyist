@@ -1,16 +1,52 @@
-name: Publish Docker Images
+name: Publish Node.js Packages and Docker image
 
 on:
+  # release:
+  #   types: [created]
   push:
-    branches: [ "main" ]
     tags: [ 'v*.*.*' ]
+    branches: [ "main" ]
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - run: yarn install --frozen-lockfile
+
+      - run: lerna run build
+
+      - run: lerna run test
+
+  publish-npm:
+    if: github.ref != 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+
+      - run: yarn install --frozen-lockfile
+
+      - run: lerna publish from-package
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+  publish-docker:
+    needs: publish-npm
     runs-on: ubuntu-latest
     permissions:
       contents: read
