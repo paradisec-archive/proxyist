@@ -33,3 +33,7 @@ Please make sure to update tests as appropriate.
 ## License
 
 [ISC](https://choosealicense.com/licenses/ISC/)
+
+## Dev Notes
+
+* lerna version - Update the version on all packages including deps, git commit, tag and push
