@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "version": "version=$(jq -r .version lerna.json); sed -i -e 's/\\(\"@paradisec\\/[^\"]*\": \"^\\)[0-9.]*/\\1'$version'/' docker/package.json && yarn && git add docker/package.json docker/yarn.lock"
+    "version": "version=$(jq -r .version lerna.json); sed -i -e 's/\\(\"@paradisec\\/[^\"]*\": \"^\\)[0-9.]*/\\1'$version'/' docker/package.json && yarn install && git add docker/package.json docker/yarn.lock"
   },
   "dependencies": {},
   "devDependencies": {
