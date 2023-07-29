@@ -1,0 +1,19 @@
+{
+  "name": "@paradisec/proxyist-docker",
+  "version": "1.0.0",
+  "description": "Docker image for proxyist",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/???",
+  "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
+  "license": "ISC",
+  "dependencies": {
+    "@paradisec/proxyist": "^0.0.1",
+    "@paradisec/proxyist-adapter-local": "^0.0.1",
+    "@paradisec/proxyist-adapter-s3": "^0.0.1"
+  },
+  "scripts": {
+    "build": "docker build -t ghcr.io/paradisec-archive/proxyist:latest .",
+    "push": "docker push ghcr.io/paradisec-archive/proxyist:latest"
+  }
+}
