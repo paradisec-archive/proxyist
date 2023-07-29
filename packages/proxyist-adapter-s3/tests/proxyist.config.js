@@ -7,7 +7,7 @@ const s3Config = {
     accessKeyId: 'S3RVER',
     secretAccessKey: 'S3RVER',
   },
-  endpoint: 'http://localhost:4568',
+  endpoint: 'http://localhost:4569',
   region: 'ap-southeast-2',
 };
 

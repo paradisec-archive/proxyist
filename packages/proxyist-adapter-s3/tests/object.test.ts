@@ -14,6 +14,7 @@ const s3rver = new S3rver({
   }],
   directory: tmpDir,
   silent: true,
+  port: 4569,
 });
 
 beforeAll(async () => {
