@@ -46,7 +46,7 @@ router.post('/:identifier/:filename', async (req, res) => {
   // }
 
   return req.pipe(ws)
-    .on('error', (err) => {
+    .on('error', (err: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
       console.error(err);
       res.status(500).send('Error writing to file');
     })
@@ -63,7 +63,7 @@ router.put('/:identifier/:filename', async (req, res) => {
   // }
   //
   return req.pipe(ws)
-    .on('error', (err) => {
+    .on('error', (err: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
       console.error(err);
       res.status(500).send('Error writing to file');
     })
