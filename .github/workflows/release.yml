@@ -59,7 +59,7 @@ jobs:
         run: |
           export VERSION=$(jq -r .version lerna.json)
           sed -i -e 's/\("@paradisec\/[^"]*": "^\)[0-9.]*/\1'$VERSION'/' docker/package.json
-          yarn install
+          cd docker && yarn install
 
       # https://github.com/docker/setup-buildx-action
       - name: Set up Docker Buildx
