@@ -1,13 +1,13 @@
 {
   "name": "@paradisec/proxyist-adapter-local",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Local filesystem adapter for proxyist",
   "main": "dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "ISC",
   "dependencies": {
-    "@paradisec/proxyist": "^0.0.1",
-    "@paradisec/proxyist-adapter-common": "^0.0.1"
+    "@paradisec/proxyist": "^0.0.2",
+    "@paradisec/proxyist-adapter-common": "^0.0.2"
   },
   "type": "module",
   "scripts": {
@@ -16,7 +16,7 @@
     "test": "node --no-warnings --experimental-vm-modules ../../node_modules/jest/bin/jest.js --forceExit"
   },
   "devDependencies": {
-    "@paradisec/proxyist-adapter-tests": "^0.0.1",
+    "@paradisec/proxyist-adapter-tests": "^0.0.2",
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/node": "^18.16.2",
