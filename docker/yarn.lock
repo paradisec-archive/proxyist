@@ -478,6 +478,20 @@
     "@smithy/types" "^2.0.2"
     tslib "^2.5.0"
 
+"@aws-sdk/s3-request-presigner@^3.379.1":
+  version "3.379.1"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/s3-request-presigner/-/s3-request-presigner-3.379.1.tgz#af3d8ce700480bcfd3957bbe4f23e45e20b083f9"
+  integrity sha512-99wY7+UzptKZIUo5VTfkkfowLt/K7eLE1MXGCsIfKZmHF756F86ZAy0CRZ1OPaAXOQI2uUbhwwBqLyQY6NbfPg==
+  dependencies:
+    "@aws-sdk/signature-v4-multi-region" "3.378.0"
+    "@aws-sdk/types" "3.378.0"
+    "@aws-sdk/util-format-url" "3.378.0"
+    "@smithy/middleware-endpoint" "^2.0.1"
+    "@smithy/protocol-http" "^2.0.1"
+    "@smithy/smithy-client" "^2.0.1"
+    "@smithy/types" "^2.0.2"
+    tslib "^2.5.0"
+
 "@aws-sdk/signature-v4-multi-region@3.378.0":
   version "3.378.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/signature-v4-multi-region/-/signature-v4-multi-region-3.378.0.tgz#bb6e46eab9009e36c22155b33dbaa2322f8ce4cc"
@@ -522,6 +536,16 @@
   integrity sha512-NU5C2l2xAXxpyB5nT0fIhahLPlJoJdzHWw4uC53KH9b4PrjHtgvgCN8beIsD3QxyfgeoM4A5J9Auo6WurfRnLw==
   dependencies:
     "@aws-sdk/types" "3.378.0"
+    tslib "^2.5.0"
+
+"@aws-sdk/util-format-url@3.378.0":
+  version "3.378.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-format-url/-/util-format-url-3.378.0.tgz#120b14a53cd7c8238407d0179570ad9be79c9895"
+  integrity sha512-CtW2HnCq08ildVD7B5OPn1zOxBAMBjkDxqzOcLw3Rk9F6OKuMM9hawulU62tMtouJPC0QSS6eLoNOrYGch5ehQ==
+  dependencies:
+    "@aws-sdk/types" "3.378.0"
+    "@smithy/querystring-builder" "^2.0.1"
+    "@smithy/types" "^2.0.2"
     tslib "^2.5.0"
 
 "@aws-sdk/util-locate-window@^3.0.0":
@@ -590,33 +614,34 @@
     methods "^1.1.2"
     path-to-regexp "^6.1.0"
 
-"@paradisec/proxyist-adapter-common@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@paradisec/proxyist-adapter-common/-/proxyist-adapter-common-0.0.1.tgz#eefec03678c8e93edeccc411f67dada5b53a2030"
-  integrity sha512-ZjLoVzl6rfagideWSlFezeOcPmJKD1kSvj3SbGg50+BdCJFBWBdnJi4AwPMnEnNW1/Se/W/Mwjo/5UO4iW6JnA==
+"@paradisec/proxyist-adapter-common@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@paradisec/proxyist-adapter-common/-/proxyist-adapter-common-0.2.1.tgz#7b02555c346015c8f4003b0959a95549a235c983"
+  integrity sha512-x6TMAgeB859070jdzdRA8z+rG6fbjKE+qC09vhtyAZ68PouquNWT561ntrz8FpldjPX1nP7u7k1uC7PcQSvnCg==
 
-"@paradisec/proxyist-adapter-local@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@paradisec/proxyist-adapter-local/-/proxyist-adapter-local-0.0.1.tgz#c063b72a96ef47433ed1f413534705c9037f3526"
-  integrity sha512-UllSHUXDfMHrKvbIPx+1XFBJ6MzrzHT7Mt+j3Jb/OMutrs6q75IGnp+FkeAg2Vh/jFaK6qHcI/IPmJxbToOwDQ==
+"@paradisec/proxyist-adapter-local@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@paradisec/proxyist-adapter-local/-/proxyist-adapter-local-0.2.1.tgz#00c0f956a225b30d5b60747959fb1af97850539e"
+  integrity sha512-YrGRGoNGj6Is1A5vDZH7errDYKRxXj+UvHmrTDJwn7EsgmFolNk/t3ajQULcO5ClQjX2m6R7ZVzASHr6gtOSEA==
   dependencies:
-    "@paradisec/proxyist" "^0.0.1"
-    "@paradisec/proxyist-adapter-common" "^0.0.1"
+    "@paradisec/proxyist" "^0.2.1"
+    "@paradisec/proxyist-adapter-common" "^0.2.1"
 
-"@paradisec/proxyist-adapter-s3@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@paradisec/proxyist-adapter-s3/-/proxyist-adapter-s3-0.0.1.tgz#0f1843e79e6ca984a823fe376970e9253a99e992"
-  integrity sha512-m4h3F8T0olyZBQul1IvjOGxlY66pCuVmk+yPnfgZSiLtO048YCJgXHp7axBA8YFnscCXkHFyo/C9ls7ftgW/Ig==
+"@paradisec/proxyist-adapter-s3@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@paradisec/proxyist-adapter-s3/-/proxyist-adapter-s3-0.2.1.tgz#12c9b4409e536b0e76141ab4b43718018fff95ec"
+  integrity sha512-oOVp1Y4dCMbSilLKMy6YC72zuz0a1NJIZRYpcAVoNEaaj4kMPpT7wA7g2tH6uGd+1NIxunCrfSzElbd0ppezqw==
   dependencies:
     "@aws-sdk/client-s3" "^3.363.0"
     "@aws-sdk/lib-storage" "^3.363.0"
-    "@paradisec/proxyist" "^0.0.1"
-    "@paradisec/proxyist-adapter-common" "^0.0.1"
+    "@aws-sdk/s3-request-presigner" "^3.379.1"
+    "@paradisec/proxyist" "^0.2.1"
+    "@paradisec/proxyist-adapter-common" "^0.2.1"
 
-"@paradisec/proxyist@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@paradisec/proxyist/-/proxyist-0.0.1.tgz#886ccdc2fc14e5d72cded65a211e625498489915"
-  integrity sha512-C3BUp+zwYakqbpHzSoQbWexDGvJJ4wKFzx0FYeO+FYJ8Xm41KIebL2Ho3AITdZWMjKXOpTdu3aU9J6zsrYvkQQ==
+"@paradisec/proxyist@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@paradisec/proxyist/-/proxyist-0.2.1.tgz#82141704843fac3180352eeb0ba177b442b3aada"
+  integrity sha512-WpYqZ9oSaxwjkJxpY4E3azs1hjohp0lI8mnX5LoIUIQzEj12PovxCGAaf8NohjlVvovC5sGARKFGf0EI55wcZA==
   dependencies:
     debug "^4.3.4"
     express "^4.18.2"
