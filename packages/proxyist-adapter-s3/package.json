@@ -8,6 +8,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.363.0",
     "@aws-sdk/lib-storage": "^3.363.0",
+    "@aws-sdk/s3-request-presigner": "^3.379.1",
     "@paradisec/proxyist": "^0.1.0",
     "@paradisec/proxyist-adapter-common": "^0.1.0"
   },

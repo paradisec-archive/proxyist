@@ -76,3 +76,32 @@ export const objectTests = async (adapterName: string, adapterConfigPath: string
       .expect(404));
   });
 };
+
+export const objectRedirectTests = async (adapterName: string, adapterConfigPath: string) => {
+  const { default: createAdapter } = await import(adapterName) as { default: ProxyistCreateAdapter<AdapterConfig> };
+
+  if (!fs.existsSync(adapterConfigPath)) {
+    throw new Error(`Adapter config file does not exist: ${adapterConfigPath}`);
+  }
+  const { default: adapterConfig } = await import(adapterConfigPath) as { default: AdapterConfig };
+
+  const adapter = await createAdapter(adapterConfig);
+
+  const app = App(adapter);
+
+  describe('Local Adapter /object', () => {
+    test('POST /NT1-001/foo.json', async () => request(app)
+      .post('/object/NT1-001/foo.json')
+      .set('Content-type', 'application/octet-stream')
+      .send('{ "FOO": "BAR" }')
+      .expect(201));
+
+    test('HEAD /NT1-001/foo.json', async () => request(app)
+      .head('/object/NT1-001/foo.json')
+      .expect(200));
+
+    test('GET /NT1-001/foo.json', async () => request(app)
+      .get('/object/NT1-001/foo.json')
+      .expect(302));
+  });
+};

@@ -1,18 +1,22 @@
+import stream from 'node:stream';
+
 import {
   S3Client,
   HeadObjectCommand,
   GetObjectCommand,
   DeleteObjectCommand,
 } from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { Upload } from '@aws-sdk/lib-storage';
 
 import type { ProxyistCreateAdapter, AdapterConfig } from '@paradisec/proxyist-adapter-common';
-import stream from 'stream';
 
 interface S3AdapterConfig extends AdapterConfig {
   bucket: string,
   prefix?: string,
   s3?: S3Client,
+  returnRedirects?: boolean,
+  redirectExpirySeconds?: number,
   transform: (identifier: string) => string,
 }
 
@@ -20,6 +24,8 @@ export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (conf
   const s3 = config.s3 || new S3Client({});
   const bucketName = config.bucket;
   const prefix = config.prefix || '';
+  const returnRedirects = config.returnRedirects || false;
+  const { redirectExpirySeconds } = config;
 
   const getPath = (identifier: string, filename: string) => {
     const path = config.transform(identifier);
@@ -48,7 +54,7 @@ export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (conf
     }
   };
 
-  const read = async (identifier: string, filename: string) => {
+  const readBody = async (identifier: string, filename: string) => {
     const path = getPath(identifier, filename);
 
     const command = new GetObjectCommand({
@@ -61,6 +67,23 @@ export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (conf
     // TODO deal with errors
     return object.Body as stream.Readable;
   };
+
+  const readRedirect = async (identifier: string, filename: string) => {
+    const path = getPath(identifier, filename);
+
+    const command = new GetObjectCommand({
+      Bucket: bucketName,
+      Key: path,
+    });
+
+    const options = redirectExpirySeconds ? { expiresIn: redirectExpirySeconds } : undefined;
+
+    const signedUrl = await getSignedUrl(s3, command, options);
+
+    return signedUrl;
+  };
+
+  const read = returnRedirects ? readRedirect : readBody;
 
   const write = async (identifier: string, filename: string) => {
     const path = getPath(identifier, filename);

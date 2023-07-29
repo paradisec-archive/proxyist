@@ -18,7 +18,7 @@ await s3rver.run();
 
 afterAll(() => {
   s3rver.close();
-  fs.rmSync('data/tests-s3', { recursive: true, force: true });
+  fs.rmSync('tests/data-s3', { recursive: true, force: true });
 });
 
 const adapterName = '@paradisec/proxyist-adapter-ocfl';

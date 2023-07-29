@@ -3,7 +3,7 @@ import path from 'node:path';
 import os from 'node:os';
 import S3rver from 's3rver'; // eslint-disable-line import/no-extraneous-dependencies
 
-import { objectTests } from '@paradisec/proxyist-adapter-tests/src/object.test'; // eslint-disable-line import/no-extraneous-dependencies
+import { objectTests, objectRedirectTests } from '@paradisec/proxyist-adapter-tests/src/object.test'; // eslint-disable-line import/no-extraneous-dependencies
 
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'proxyist-adapter-s3'));
 
@@ -27,6 +27,8 @@ afterAll(() => {
 });
 
 const adapterName = '@paradisec/proxyist-adapter-s3';
-const adapterConfigPath = (new URL('proxyist.config.js', import.meta.url)).toString().replace('file://', '');
+const adapterConfigPathBody = (new URL('proxyist.config-body.js', import.meta.url)).toString().replace('file://', '');
+const adapterConfigPathRedirect = (new URL('proxyist.config-redirect.js', import.meta.url)).toString().replace('file://', '');
 
-await objectTests(adapterName, adapterConfigPath);
+await objectTests(adapterName, adapterConfigPathBody);
+await objectRedirectTests(adapterName, adapterConfigPathRedirect);
