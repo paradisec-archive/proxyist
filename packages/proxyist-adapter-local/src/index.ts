@@ -34,8 +34,8 @@ const createAdapter: ProxyistCreateAdapter<LocalAdapterConfig> = async (config) 
       fs.mkdirSync(directory, { recursive: true });
     }
 
-    const ws = fs.createWriteStream(path);
-    return { ws, promise: Promise.resolve(true) };
+    const result = fs.createWriteStream(path);
+    return { result, promise: Promise.resolve(true) };
   };
 
   const rm = async (identifier: string, filename: string) => {

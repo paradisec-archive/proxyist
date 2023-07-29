@@ -1,4 +1,4 @@
-import type { ProxyistAdapter } from 'proxyist-adapter-common';
+import type { ProxyistAdapter } from '@paradisec/proxyist-adapter-common';
 
 declare global {
   namespace Express {

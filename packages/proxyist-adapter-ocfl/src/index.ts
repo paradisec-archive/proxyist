@@ -59,13 +59,13 @@ const createAdapter: ProxyistCreateAdapter<LocalAdapterConfig> = async (config) 
   const write = async (identifier: string, filename: string) => {
     const object = getObject(identifier);
     const path = getPath(filename);
-    const ws = new PassThrough();
+    const result = new PassThrough();
 
     const promise = object.update(async (transaction: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
-      await transaction.write(path, ws);
+      await transaction.write(path, result);
     });
 
-    return { ws, promise };
+    return { result, promise };
   };
 
   const rm = async (identifier: string, filename: string) => {

@@ -7,7 +7,8 @@ export type AdapterConfig = object;
 export type ProxyistAdapter = {
   exists: (identifier: string, filename: string) => Promise<boolean>;
   read: (identifier: string, filename: string) => Promise<Readable | string>;
-  write: (identifier: string, filename: string) => Promise<{ ws: Writable, promise: Promise<any>}>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  write: (identifier: string, filename: string) => Promise<{ result: Writable | string, promise: Promise<any>}>;
   rm: (identifier: string, filename: string) => Promise<void>;
 };
 

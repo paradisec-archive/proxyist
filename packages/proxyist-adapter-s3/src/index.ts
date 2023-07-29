@@ -65,14 +65,14 @@ export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (conf
   const write = async (identifier: string, filename: string) => {
     const path = getPath(identifier, filename);
 
-    const ws = new stream.PassThrough();
+    const result = new stream.PassThrough();
 
     const command = {
       client: s3,
       params: {
         Bucket: bucketName,
         Key: path,
-        Body: ws,
+        Body: result,
       },
     };
 
@@ -80,7 +80,7 @@ export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (conf
 
     const promise = upload.done();
 
-    return { ws, promise };
+    return { result, promise };
   };
 
   const rm = async (identifier: string, filename: string) => {

@@ -39,13 +39,13 @@ router.post('/:identifier/:filename', async (req, res) => {
     return res.status(409).send('File already exists');
   }
 
-  const { ws, promise } = await req.locals.adapter.write(identifier, filename);
+  const { result, promise } = await req.locals.adapter.write(identifier, filename);
 
-  // if (typeof result === 'string') {
-  //   return res.redirect(307, result);
-  // }
+  if (typeof result === 'string') {
+    return res.redirect(307, result);
+  }
 
-  return req.pipe(ws)
+  return req.pipe(result)
     .on('error', (err: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
       console.error(err);
       res.status(500).send('Error writing to file');
@@ -56,13 +56,13 @@ router.post('/:identifier/:filename', async (req, res) => {
 router.put('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
 
-  const { ws, promise } = await req.locals.adapter.write(identifier, filename);
+  const { result, promise } = await req.locals.adapter.write(identifier, filename);
 
-  // if (typeof result === 'string') {
-  //   return res.redirect(307, result);
-  // }
-  //
-  return req.pipe(ws)
+  if (typeof result === 'string') {
+    return res.redirect(307, result);
+  }
+
+  return req.pipe(result)
     .on('error', (err: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
       console.error(err);
       res.status(500).send('Error writing to file');
