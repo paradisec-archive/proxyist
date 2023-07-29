@@ -1,6 +1,6 @@
 {
   "name": "@paradisec/proxyist-adapter-ocfl",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "OCFL adapter for proxyist",
   "main": "dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
@@ -9,8 +9,8 @@
   "dependencies": {
     "@ocfl/ocfl-fs": "^0.2.0",
     "@ocfl/ocfl-s3": "link: ../../../ocfl-js/ocfl-s3/",
-    "@paradisec/proxyist": "^0.2.4",
-    "@paradisec/proxyist-adapter-common": "^0.2.4"
+    "@paradisec/proxyist": "^0.2.5",
+    "@paradisec/proxyist-adapter-common": "^0.2.5"
   },
   "type": "module",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.367.0",
-    "@paradisec/proxyist-adapter-tests": "^0.2.4",
+    "@paradisec/proxyist-adapter-tests": "^0.2.5",
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/node": "^18.16.2",
