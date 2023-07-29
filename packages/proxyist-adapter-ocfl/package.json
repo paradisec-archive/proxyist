@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "@ocfl/ocfl-fs": "^0.2.0",
     "@ocfl/ocfl-s3": "link: ../../../ocfl-js/ocfl-s3/",
