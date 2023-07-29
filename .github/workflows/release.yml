@@ -23,9 +23,9 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: lerna run build
+      - run: yarn run lerna run build
 
-      - run: lerna run test
+      - run: yarn run lerna run test
 
   publish-npm:
     if: github.ref != 'refs/heads/main'
@@ -41,7 +41,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: lerna publish from-package
+      - run: yarn run lerna publish from-package
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 

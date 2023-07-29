@@ -6,9 +6,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "tsc --build --verbose",
-    "start": "node dist/index.js",
-    "dev": "concurrently \"tsc --watch\" \"DEBUG=proxyist:* nodemon dist/index.js\""
+    "version": "yarn install && git stage yarn.lock"
   },
   "dependencies": {},
   "devDependencies": {
