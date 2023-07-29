@@ -1,6 +1,6 @@
 {
   "name": "@paradisec/proxyist",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Filesystem REST API which supports multiple backend plugins",
   "main": "dist/app.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
@@ -20,7 +20,7 @@
     "test": "node --no-warnings --experimental-vm-modules ../../node_modules/jest/bin/jest.js --forceExit"
   },
   "devDependencies": {
-    "@paradisec/proxyist-adapter-common": "^0.0.2",
+    "@paradisec/proxyist-adapter-common": "^0.0.3",
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/debug": "^4.1.8",
