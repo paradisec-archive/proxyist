@@ -2,10 +2,16 @@
   "name": "proxyist",
   "description": "Filesystem REST API which supports multiple backend plugins",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "tsc --build --verbose",
     "start": "node dist/index.js",
     "dev": "concurrently \"tsc --watch\" \"DEBUG=proxyist:* nodemon dist/index.js\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^7.1.4"
   }
 }
