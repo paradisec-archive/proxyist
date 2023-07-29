@@ -41,7 +41,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: yarn run lerna publish from-package --no-private
+      - run: yarn run lerna publish from-package --no-private --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
