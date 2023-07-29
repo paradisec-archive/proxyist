@@ -1,6 +1,6 @@
 {
   "name": "@paradisec/proxyist-adapter-s3",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "S3 adapter for proxyist",
   "main": "dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
@@ -9,8 +9,8 @@
     "@aws-sdk/client-s3": "^3.363.0",
     "@aws-sdk/lib-storage": "^3.363.0",
     "@aws-sdk/s3-request-presigner": "^3.379.1",
-    "@paradisec/proxyist": "^0.2.6",
-    "@paradisec/proxyist-adapter-common": "^0.2.6"
+    "@paradisec/proxyist": "^0.2.7",
+    "@paradisec/proxyist-adapter-common": "^0.2.7"
   },
   "type": "module",
   "scripts": {
@@ -19,7 +19,7 @@
     "test": "node --no-warnings --experimental-vm-modules ../../node_modules/jest/bin/jest.js --forceExit"
   },
   "devDependencies": {
-    "@paradisec/proxyist-adapter-tests": "^0.2.6",
+    "@paradisec/proxyist-adapter-tests": "^0.2.7",
     "@tsconfig/node18": "^18.2.0",
     "@tsconfig/strictest": "^2.0.1",
     "@types/node": "^18.16.2",
