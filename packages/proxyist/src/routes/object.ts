@@ -21,7 +21,12 @@ router.get('/:identifier/:filename', async (req, res) => {
     return res.sendStatus(404);
   }
 
-  const result = await req.locals.adapter.read(identifier, filename);
+  let download = false;
+  if (req.query.disposition === 'attachment') {
+    download = true;
+  }
+
+  const result = await req.locals.adapter.read(identifier, filename, download);
 
   if (typeof result === 'string') {
     return res.redirect(result);

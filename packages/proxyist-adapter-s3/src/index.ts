@@ -5,6 +5,7 @@ import {
   HeadObjectCommand,
   GetObjectCommand,
   DeleteObjectCommand,
+  GetObjectCommandInput,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { Upload } from '@aws-sdk/lib-storage';
@@ -54,36 +55,33 @@ export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (conf
     }
   };
 
-  const readBody = async (identifier: string, filename: string) => {
+  const read = async (identifier: string, filename: string, download = false) => {
     const path = getPath(identifier, filename);
 
-    const command = new GetObjectCommand({
+    const params: GetObjectCommandInput = {
       Bucket: bucketName,
       Key: path,
-    });
+    };
+
+    if (download) {
+      params.ResponseContentDisposition = `attachment; filename=${filename}`;
+    }
+    const command = new GetObjectCommand(params);
+
+    // TODO deal with errors
+
+    if (returnRedirects) {
+      const options = redirectExpirySeconds ? { expiresIn: redirectExpirySeconds } : undefined;
+
+      const signedUrl = await getSignedUrl(s3, command, options);
+
+      return signedUrl;
+    }
 
     const object = await s3.send(command);
 
-    // TODO deal with errors
     return object.Body as stream.Readable;
   };
-
-  const readRedirect = async (identifier: string, filename: string) => {
-    const path = getPath(identifier, filename);
-
-    const command = new GetObjectCommand({
-      Bucket: bucketName,
-      Key: path,
-    });
-
-    const options = redirectExpirySeconds ? { expiresIn: redirectExpirySeconds } : undefined;
-
-    const signedUrl = await getSignedUrl(s3, command, options);
-
-    return signedUrl;
-  };
-
-  const read = returnRedirects ? readRedirect : readBody;
 
   const write = async (identifier: string, filename: string) => {
     const path = getPath(identifier, filename);
