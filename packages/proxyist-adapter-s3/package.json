@@ -2,7 +2,7 @@
   "name": "@paradisec/proxyist-adapter-s3",
   "version": "0.2.9",
   "description": "S3 adapter for proxyist",
-  "main": "dist/index.js",
+  "exports": "./dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "ISC",
   "dependencies": {
