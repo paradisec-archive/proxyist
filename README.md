@@ -37,4 +37,4 @@ Please make sure to update tests as appropriate.
 ## Dev Notes
 
 * lerna version - Update the version on all packages including deps, git commit, tag and push
-* lerna publish minor - Publish to npm
+* lerna publish --force-publish - Publish to npm
