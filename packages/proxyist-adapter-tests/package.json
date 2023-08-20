@@ -1,12 +1,12 @@
 {
   "name": "@paradisec/proxyist-adapter-tests",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Proxyist adapter tests",
   "main": "index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "ISC",
   "dependencies": {
-    "@paradisec/proxyist": "^0.2.8",
+    "@paradisec/proxyist": "^0.2.9",
     "@paradisec/proxyist-adapter-common": "^0.2.8",
     "supertest": "^6.3.3"
   },

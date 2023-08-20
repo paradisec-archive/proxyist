@@ -1,6 +1,6 @@
 {
   "name": "@paradisec/proxyist",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Filesystem REST API which supports multiple backend plugins",
   "main": "dist/app.js",
   "bin": "dist/app.js",
