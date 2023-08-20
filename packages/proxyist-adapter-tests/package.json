@@ -2,7 +2,7 @@
   "name": "@paradisec/proxyist-adapter-tests",
   "version": "0.2.13",
   "description": "Proxyist adapter tests",
-  "exports": "./dist/index.js",
+  "main": "index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
   "license": "ISC",
   "dependencies": {
