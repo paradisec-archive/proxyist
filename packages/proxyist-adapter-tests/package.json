@@ -1,6 +1,6 @@
 {
   "name": "@paradisec/proxyist-adapter-tests",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "Proxyist adapter tests",
   "main": "index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
