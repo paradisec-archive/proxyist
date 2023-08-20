@@ -1,6 +1,6 @@
 {
   "name": "@paradisec/proxyist-adapter-s3",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "S3 adapter for proxyist",
   "exports": "./dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
