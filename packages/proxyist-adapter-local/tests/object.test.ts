@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import { objectTests } from '@paradisec/proxyist-adapter-tests/src/object.test'; // eslint-disable-line import/no-extraneous-dependencies
+import { objectTests } from '@paradisec/proxyist-adapter-tests'; // eslint-disable-line import/no-extraneous-dependencies
 
 const tmpDir = new URL('data', import.meta.url);
 
