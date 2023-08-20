@@ -3,7 +3,7 @@ import path from 'node:path';
 import os from 'node:os';
 import S3rver from 's3rver'; // eslint-disable-line import/no-extraneous-dependencies
 
-import { objectTests, objectRedirectTests } from '@paradisec/proxyist-adapter-tests'; // eslint-disable-line import/no-extraneous-dependencies
+import { objectTests, objectRedirectTests } from '@paradisec/proxyist-adapter-tests/src/object.test'; // eslint-disable-line import/no-extraneous-dependencies
 
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'proxyist-adapter-s3'));
 
