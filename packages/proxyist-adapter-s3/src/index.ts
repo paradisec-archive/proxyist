@@ -6,6 +6,7 @@ import {
   GetObjectCommand,
   DeleteObjectCommand,
   GetObjectCommandInput,
+  ListObjectsV2Command,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { Upload } from '@aws-sdk/lib-storage';
@@ -28,10 +29,16 @@ export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (conf
   const returnRedirects = config.returnRedirects || false;
   const { redirectExpirySeconds } = config;
 
-  const getPath = (identifier: string, filename: string) => {
+  const getDirectory = (identifier: string) => {
     const path = config.transform(identifier);
 
-    return `${prefix ? `${prefix}/` : ''}${path}/${filename}`;
+    return `${prefix ? `${prefix}/` : ''}${path}`;
+  };
+
+  const getPath = (identifier: string, filename: string) => {
+    const directory = getDirectory(identifier);
+
+    return `${directory}/${filename}`;
   };
 
   const exists = async (identifier: string, filename: string) => {
@@ -115,11 +122,26 @@ export const createAdapter: ProxyistCreateAdapter<S3AdapterConfig> = async (conf
     await s3.send(command);
   };
 
+  const listFiles = async (identifier: string) => {
+    const directory = getDirectory(identifier);
+
+    const command = new ListObjectsV2Command({
+      Bucket: bucketName,
+      Prefix: directory,
+    });
+
+    const response = await s3.send(command);
+    const files = response.Contents?.map((file) => file.Key).filter(Boolean) || [];
+
+    return files.map((file) => (file as string).replace(`${directory}/`, ''));
+  };
+
   return {
     exists,
     read,
     write,
     rm,
+    listFiles,
   };
 };
 

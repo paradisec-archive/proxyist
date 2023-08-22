@@ -10,6 +10,7 @@ export type ProxyistAdapter = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   write: (identifier: string, filename: string) => Promise<{ result: Writable | string, promise: Promise<any>}>;
   rm: (identifier: string, filename: string) => Promise<void>;
+  listFiles: (identifier: string) => Promise<Array<string>>;
 };
 
 export type ProxyistCreateAdapter<T extends AdapterConfig> = (config: T) => Promise<ProxyistAdapter>;

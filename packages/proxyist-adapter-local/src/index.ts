@@ -8,10 +8,16 @@ interface LocalAdapterConfig extends AdapterConfig {
 }
 
 const createAdapter: ProxyistCreateAdapter<LocalAdapterConfig> = async (config) => {
-  const getPath = (identifier: string, filename: string) => {
+  const getDirectory = (identifier: string) => {
     const path = config.transform(identifier);
 
-    return `${config.directory}/${path}/${filename}`;
+    return `${config.directory}/${path}`;
+  };
+
+  const getPath = (identifier: string, filename: string) => {
+    const directory = getDirectory(identifier);
+
+    return `${directory}/${filename}`;
   };
 
   const exists = async (identifier: string, filename: string) => {
@@ -44,11 +50,22 @@ const createAdapter: ProxyistCreateAdapter<LocalAdapterConfig> = async (config) 
     return fs.rmSync(path);
   };
 
+  const listFiles = async (identifier: string) => {
+    const directory = getDirectory(identifier);
+
+    if (!fs.existsSync(directory)) {
+      return [];
+    }
+
+    return fs.readdirSync(directory, { recursive: true, encoding: 'utf8' });
+  };
+
   return {
     exists,
     read,
     write,
     rm,
+    listFiles,
   };
 };
 

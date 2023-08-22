@@ -2,6 +2,14 @@ import express from 'express';
 
 const router = express.Router();
 
+router.get('/:identifier', async (req, res) => {
+  const { identifier } = req.params;
+
+  const files = await req.locals.adapter.listFiles(identifier);
+
+  res.json(files);
+});
+
 router.head('/:identifier/:filename', async (req, res) => {
   const { identifier, filename } = req.params;
 

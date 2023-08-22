@@ -18,6 +18,11 @@ export const objectTests = async (adapterName: string, adapterConfigPath: string
   const app = App(adapter);
 
   describe('Local Adapter /object', () => {
+    test('GET /NT1-001', async () => request(app)
+      .get('/object/NT1-001')
+      .expect(200)
+      .expect('[]'));
+
     test('HEAD /NT1-001/no-file.json', async () => request(app)
       .head('/object/NT1-001/no-file.json')
       .expect(404));
@@ -31,6 +36,11 @@ export const objectTests = async (adapterName: string, adapterConfigPath: string
       .set('Content-type', 'application/octet-stream')
       .send('{ "FOO": "BAR" }')
       .expect(201));
+
+    test('GET /NT1-001', async () => request(app)
+      .get('/object/NT1-001')
+      .expect(200)
+      .expect('["foo.json"]'));
 
     test('HEAD /NT1-001/foo.json', async () => request(app)
       .head('/object/NT1-001/foo.json')
