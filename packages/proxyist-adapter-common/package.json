@@ -1,6 +1,6 @@
 {
   "name": "@paradisec/proxyist-adapter-common",
-  "version": "0.2.18",
+  "version": "0.3.0",
   "description": "Common adatper interface for proxyist",
   "exports": "./dist/index.js",
   "author": "John Ferlito <johnf@inodes.org> (https://inodes.org)",
